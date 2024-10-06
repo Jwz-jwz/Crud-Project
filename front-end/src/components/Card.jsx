@@ -1,5 +1,10 @@
-export const AddNewProduct = ({ productName, category, price }) => {
-  // const { productName, category, price } = products;
+export const ProducCard = ({
+  product,
+  selectedProduct,
+  setSelectedProduct,
+  setProducts,
+}) => {
+  const { productName, category, price } = products;
   return (
     <div className="card bg-neutral text-neutral-content w-96">
       <div className="card-body items-center text-center">
