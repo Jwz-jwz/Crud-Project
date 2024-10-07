@@ -1,7 +1,7 @@
-import { DeleteIcon } from "../svg/DeletIcon";
-import { EditIcon } from "../svg/EditIcon";
+import { DeleteIcon } from "@/app/svg/DeletIcon";
+import { EditIcon } from "@/app/svg/EditIcon";
 
-export const ProductCard = () => {
+export const ProductCard = ({}) => {
   return (
     <div className="w-[364px] rounded-[20px] flex flex-col gap-4 p-6 border border-[#F4F4F4]">
       <div className="flex justify-between">
