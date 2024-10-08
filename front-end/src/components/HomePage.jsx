@@ -31,8 +31,10 @@ export const HomePage = () => {
         },
         body: JSON.stringify(product),
       };
+
       const response = await fetch(`${BACKEND_POINT}/product`, options);
       const data = await response.json();
+
       setProducts((prevProducts) => [...prevProducts, data.product]);
     } catch {
       console.log("error");
@@ -57,21 +59,41 @@ export const HomePage = () => {
       };
     });
   };
+  const handleDelete = async (id) => {
+    try {
+      const options = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: id }),
+      };
+      const response = await fetch(`${BACKEND_ENDPOINT}/product`, options);
+      const data = await response.json();
+
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => data?.product?.id !== product?.id)
+      );
+    } catch {
+      console.log("error");
+    }
+    // document.getElementById("my_modal_2").close();
+  };
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="container ">
+    <div className="w-full flex flex-col items-center">
+      <div className="container flex justify-center mt-[20px  ]">
         <AddNewProducts
           setProducts={setProducts}
           handleAddProduct={handleAddProduct}
           handleInputChange={handleInputChange}
         />
       </div>
-      <div className="grid grid-cols-3 gap-6 mt-6">
+      <div className="grid grid-cols-4 gap-6 mt-6 container justify-center items-center">
         {products?.map((product) => {
           return (
             <ProductCard
@@ -79,6 +101,7 @@ export const HomePage = () => {
               setProducts={setProducts}
               setSelectedProduct={setSelectedProduct}
               selectedProduct={selectedProduct}
+              handleDelete={handleDelete}
             />
           );
         })}
