@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export const AddNewProducts = ({ handleAddProduct, handleInputChange }) => {
   return (
     <div className="w-full flex justify-center">
