@@ -3,11 +3,11 @@ export const EditModal = ({ handleInputChange, handleSubmit }) => {
     <div>
       <button
         className="btn"
-        onClick={() => document.getElementById("my_modal_1").showModal()}
+        onClick={() => document.getElementById("my_modal_2").showModal()}
       >
         Edit product
       </button>
-      <dialog id="my_modal_1" className="modal">
+      <dialog id="my_modal_2" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Edit product</h3>
           <p className="py-4">Product name</p>

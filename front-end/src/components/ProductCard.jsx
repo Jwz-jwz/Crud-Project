@@ -17,9 +17,10 @@ export const ProductCard = ({
         },
         body: JSON.stringify({ id: id }),
       };
+
       const response = await fetch(`${BACKEND_POINT}/product`, options);
       const data = await response.json();
-      console.log(id);
+      console.log(data.product);
 
       setProducts((prevProducts) =>
         prevProducts.filter((product) => data?.product?.id !== product?.id)
@@ -29,6 +30,7 @@ export const ProductCard = ({
     }
     // document.getElementById("my_modal_2").close();
   };
+
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
@@ -41,7 +43,7 @@ export const ProductCard = ({
       };
       const response = await fetch(`${BACKEND_ENDPOINT}/product`, options);
       const data = await response.json(response);
-      setProducts(data.products);
+      setProducts(data?.products);
     } catch {
       console.log("error");
     }
