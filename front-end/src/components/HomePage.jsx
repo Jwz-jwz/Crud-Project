@@ -33,6 +33,7 @@ export const HomePage = () => {
         {products?.map((product) => {
           return (
             <ProductCard
+              key={product?.id}
               product={product}
               setProducts={setProducts}
               setSelectedProduct={setSelectedProduct}
