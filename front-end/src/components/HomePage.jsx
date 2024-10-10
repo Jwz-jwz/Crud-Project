@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-import { BACKEND_POINT } from "@/constants/constant";
 import { AddNewProducts } from "./AddNewProduct";
 import { ProductCard } from "./ProductCard";
+import { BACKEND_ENDPOINT } from "@/constants/constant";
 
 export const HomePage = () => {
   const [products, setProducts] = useState([]); //get huselteer fetch hiisen datag hadgalah
@@ -12,7 +12,7 @@ export const HomePage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`${BACKEND_POINT}/products`);
+      const response = await fetch(`${BACKEND_ENDPOINT}/products`);
       const responseData = await response.json();
       setProducts(responseData?.products);
     } catch (error) {
