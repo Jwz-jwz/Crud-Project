@@ -1,3 +1,4 @@
+import { BACKEND_ENDPOINT } from "@/constants/constant";
 import { useState } from "react";
 
 export const AddNewProducts = ({ setProducts }) => {
@@ -14,7 +15,7 @@ export const AddNewProducts = ({ setProducts }) => {
         body: JSON.stringify(product),
       };
 
-      const response = await fetch(`${BACKEND_POINT}/product`, options);
+      const response = await fetch(`${BACKEND_ENDPOINT}/product`, options);
       const data = await response.json();
       console.log(data.product);
 

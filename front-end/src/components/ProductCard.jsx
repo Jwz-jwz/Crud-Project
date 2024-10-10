@@ -1,3 +1,4 @@
+import { BACKEND_ENDPOINT } from "@/constants/constant";
 import { EditModal } from "./EditProduct";
 
 export const ProductCard = ({
@@ -15,20 +16,24 @@ export const ProductCard = ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id: id }),
+        body: JSON.stringify({ id }),
       };
 
-      const response = await fetch(`${BACKEND_POINT}/product`, options);
+      const response = await fetch(`${BACKEND_ENDPOINT}/product`, options);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
       const data = await response.json();
-      console.log(data.product);
 
       setProducts((prevProducts) =>
-        prevProducts.filter((product) => data?.product?.id !== product?.id)
+        prevProducts.filter((product) => product.id !== id)
       );
-    } catch {
-      console.log("error");
+
+      // Optionally close the modal if needed
+      // document.getElementById("my_modal_2").close();
+    } catch (error) {
+      console.log("Error:", error);
     }
-    // document.getElementById("my_modal_2").close();
   };
 
   const handleSubmit = async (event) => {
@@ -74,8 +79,11 @@ export const ProductCard = ({
           Delete
         </button>
         <EditModal
-          handleInputChange={handleInputChange}
+          product={product}
+          setSelectedProduct={setSelectedProduct}
+          selectedProduct={selectedProduct}
           handleSubmit={handleSubmit}
+          handleInputChange={handleInputChange}
         />
       </div>
     </div>

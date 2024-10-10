@@ -1,1 +1,1 @@
-export const BACKEND_POINT = "http://localhost:7777";
+export const BACKEND_ENDPOINT = "http://localhost:7777";

@@ -1,10 +1,17 @@
-export const EditModal = ({ handleInputChange, handleSubmit }) => {
+export const EditModal = ({
+  selectedProduct,
+  handleInputChange,
+  handleSubmit,
+  setSelectedProduct,
+  product,
+}) => {
+  const handleModalClick = () => {
+    document.getElementById("my_modal_2").showModal();
+    setSelectedProduct(product);
+  };
   return (
     <div>
-      <button
-        className="btn"
-        onClick={() => document.getElementById("my_modal_2").showModal()}
-      >
+      <button className="btn" onClick={handleModalClick}>
         Edit product
       </button>
       <dialog id="my_modal_2" className="modal">
@@ -16,6 +23,7 @@ export const EditModal = ({ handleInputChange, handleSubmit }) => {
             name="productName"
             type="text"
             className="bg-white text-black border border-1"
+            value={selectedProduct?.productName}
           />
           <p className="py-4">Product category</p>
           <input
@@ -23,6 +31,7 @@ export const EditModal = ({ handleInputChange, handleSubmit }) => {
             name="category"
             type="text"
             className="bg-white text-black border border-1"
+            value={selectedProduct?.category}
           />
           <p className="py-4">Price</p>
           <input
@@ -30,6 +39,7 @@ export const EditModal = ({ handleInputChange, handleSubmit }) => {
             name="price"
             type="text"
             className="bg-white  text-black border border-1"
+            value={selectedProduct?.price}
           />
           <div className="modal-action">
             <form method="dialog">
