@@ -28,9 +28,6 @@ export const ProductCard = ({
       setProducts((prevProducts) =>
         prevProducts.filter((product) => product.id !== id)
       );
-
-      // Optionally close the modal if needed
-      // document.getElementById("my_modal_2").close();
     } catch (error) {
       console.log("Error:", error);
     }

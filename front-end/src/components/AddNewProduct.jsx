@@ -17,7 +17,6 @@ export const AddNewProducts = ({ setProducts }) => {
 
       const response = await fetch(`${BACKEND_ENDPOINT}/product`, options);
       const data = await response.json();
-      console.log(data.product);
 
       setProducts((prevProducts) => [...prevProducts, data?.product]);
     } catch {
